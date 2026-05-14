@@ -1,11 +1,16 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import HomeSections from '../components/HomeSections.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = "Bienvenidos a Academia Fenix";
 ---
 
 <Layout>
-	<Welcome />
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Bienvenidos a Academia Fenix</h1>
+        <p class="mb-4">Descubre el entrenamiento de Taekwondo ITF y eventos en nuestra escuela.</p>
+
+        <!-- Secciones del Inicio -->
+        {<HomeSections />}
+    </main>
 </Layout>

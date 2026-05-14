@@ -1,0 +1,17 @@
+---
+import { getTrainingSchedule } from '../data/training-schedule';
+import type { TrainingSchedule } from '../types';
+
+const schedules = await getTrainingSchedule();
+---
+
+<div class="bg-white p-6 rounded-lg shadow-md animate-fade-in-up flex justify-center items-center">
+    <div>
+        <h2 class="text-xl font-bold mb-4">Horario de Clases</h2>
+        {schedules.map((schedule: TrainingSchedule, _index: number) => (
+            <>
+                <p  class="mb-2 text-lg">{`${schedule.day}: ${schedule.time}`}</p>
+            </>
+        ))}
+    </div>
+</div>

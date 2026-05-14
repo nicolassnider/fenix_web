@@ -1,0 +1,20 @@
+---
+import { getTestimonials } from '../data/testimonials';
+import type { Testimonial } from '../types';
+
+const testimonials = await getTestimonials();
+---
+
+<div class="bg-white p-6 rounded-lg shadow-md animate-fade-in-up flex justify-center items-center">
+    <div>
+        <h2 class="text-xl font-bold mb-4">Testimonios</h2>
+        {testimonials.map((testimonial: Testimonial, index: number) => (
+            <>
+                <blockquote class="border-l-4 border-primaryBlue p-3 mb-4 flex justify-between items-center">
+                    <p>{testimonial.text}</p>
+                    - <cite class="ml-2">{testimonial.name}</cite>
+                </blockquote>
+            </>
+        ))}
+    </div>
+</div>

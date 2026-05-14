@@ -1,0 +1,24 @@
+---
+import Hero from './Hero.astro';
+import TrainingSchedule from './TrainingSchedule.astro';
+import Testimonials from './Testimonials.astro';
+
+
+---
+
+<div class="container mx-auto px-4 py-8">
+    <!-- Hero Section -->
+    <div id="hero" class="mb-10">
+        <Hero />
+    </div>
+
+    <!-- Training Schedule Section -->
+    <div id="training-schedule" class="mb-10 animate-pulse flex justify-center items-center">
+        <TrainingSchedule />
+    </div>
+
+    <!-- Testimonials Section -->
+    <div id="testimonials" class="animate-fade-in-up mb-10">
+        <Testimonials />
+    </div>
+</div>
