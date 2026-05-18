@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "title": "Inscripciones Abiertas 2026",
+        "excerpt": "Las inscripciones para el nuevo ciclo de entrenamiento ya están abiertas. ¡No te quedes fuera!",
+        "content": "Estamos emocionados de anunciar que las inscripciones para el ciclo 2026 están abiertas. Ofrecemos programas para todas las edades y niveles. Ven y forma parte de nuestra familia de Taekwon-Do.",
+        "date": "2026-01-15",
+        "category": "Noticias"
+    },
+    {
+        "id": "2",
+        "title": "Campeonato Regional",
+        "excerpt": "Nuestros estudiantes se preparan para el próximo campeonato regional de Taekwon-Do.",
+        "content": "El equipo de Academia Fenix se está preparando intensamente para el campeonato regional que se llevará a cabo el próximo mes. Los estudiantes han estado entrenando con dedicación y entusiasmo.",
+        "date": "2026-02-20",
+        "category": "Eventos"
+    },
+    {
+        "id": "3",
+        "title": "Nuevo Horario de Verano",
+        "excerpt": "A partir de diciembre, ajustaremos nuestros horarios de entrenamiento para la temporada de verano.",
+        "content": "Durante la temporada de verano, modificaremos nuestros horarios para adaptarnos a las necesidades de nuestros estudiantes. Las clases de infantiles serán de 17:00 a 18:00 y las de juveniles y adultos de 18:00 a 19:00.",
+        "date": "2026-03-10",
+        "category": "Anuncios"
+    },
+    {
+        "id": "4",
+        "title": "Clase de Demonstración",
+        "excerpt": "Invitamos a todas las familias a nuestra clase abierta de demonstración este sábado.",
+        "content": "Este sábado tendremos una clase abierta donde los padres y familiares pueden ver el progreso de nuestros estudiantes. Habrá demostraciones de patadas, formas y combate controlado.",
+        "date": "2026-04-05",
+        "category": "Eventos"
+    },
+    {
+        "id": "5",
+        "title": "Graduación de Cinturones",
+        "excerpt": "Felicitaciones a todos los estudiantes que aprobaron su examen de graduación el mes pasado.",
+        "content": "El mes pasado realizamos nuestro examen de graduación y estamos orgullosos de anunciar que todos los estudiantes aprobaron. ¡Felicidades a nuestros nuevos cinturones amarillos, verdes y azules!",
+        "date": "2026-05-01",
+        "category": "Logros"
+    },
+    {
+        "id": "6",
+        "title": "Taller de Autodefensa",
+        "excerpt": "Próximamente ofreceremos un taller intensivo de autodefensa para adultos.",
+        "content": "En respuesta a la demanda de nuestra comunidad, organizaremos un taller de autodefensa de fin de semana. El taller cubrirá técnicas básicas de protección personal y situaciones de riesgo.",
+        "date": "2026-06-15",
+        "category": "Eventos"
+    }
+]

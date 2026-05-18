@@ -2,16 +2,24 @@ import type { TrainingSchedule } from "../types";
 
 const trainingSchedule: TrainingSchedule[] = [
     {
-        day: 'Lunes',
-        time: '18:00 - 20:00'
+        day: 'Martes',
+        time: '18:30 - 19:30',
+        category: 'Infantiles'
+    },
+    {
+        day: 'Jueves',
+        time: '18:30 - 19:30',
+        category: 'Infantiles'
     },
     {
         day: 'Martes',
-        time: '19:30 - 21:30'
+        time: '19:30 - 20:30',
+        category: 'Juveniles y Adultos'
     },
     {
-        day: 'Miércoles',
-        time: '17:00 - 19:00'
+        day: 'Jueves',
+        time: '19:30 - 20:30',
+        category: 'Juveniles y Adultos'
     }
 ];
 
