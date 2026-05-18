@@ -1,27 +1,7 @@
 import type { TrainingSchedule } from "../types";
+import trainingScheduleData from "./training-schedule.json";
 
-const trainingSchedule: TrainingSchedule[] = [
-    {
-        day: 'Martes',
-        time: '18:30 - 19:30',
-        category: 'Infantiles'
-    },
-    {
-        day: 'Jueves',
-        time: '18:30 - 19:30',
-        category: 'Infantiles'
-    },
-    {
-        day: 'Martes',
-        time: '19:30 - 20:30',
-        category: 'Juveniles y Adultos'
-    },
-    {
-        day: 'Jueves',
-        time: '19:30 - 20:30',
-        category: 'Juveniles y Adultos'
-    }
-];
+const trainingSchedule: TrainingSchedule[] = trainingScheduleData as TrainingSchedule[];
 
 export async function getTrainingSchedule(): Promise<TrainingSchedule[]> {
     return new Promise((resolve) => {

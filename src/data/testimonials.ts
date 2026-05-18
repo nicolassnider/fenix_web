@@ -1,25 +1,9 @@
 // src/data/testimonials.ts
 
 import type { Testimonial } from "../types";
+import testimonialsData from "./testimonials.json";
 
-
-const testimonials: Testimonial[] = [
-    {
-        name: 'Juan Pérez',
-        text: "El Taekwondo ITF en Academia Fenix ha mejorado significativamente mi condición física y mi disciplina.",
-        image: '/images/avatar1.png'
-    },
-    {
-        name: 'María González',
-        text: "Me siento muy agradecida por la amabilidad del instructor y la camaradería en el dojo. Es un lugar perfecto para aprender Taekwondo ITF.",
-        image: '/images/avatar2.png'
-    },
-    {
-        name: 'Carlos Ramírez',
-        text: "La energía y las técnicas que se enseñan aquí son increíbles. Recomiendo esta academia a todos los amantes del Taekwondo.",
-        image: '/images/avatar3.png'
-    }
-];
+const testimonials: Testimonial[] = testimonialsData as Testimonial[];
 
 export async function getTestimonials(): Promise<Testimonial[]> {
     return new Promise((resolve) => {
