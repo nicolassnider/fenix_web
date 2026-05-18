@@ -3,22 +3,22 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles.css';
 
-const title = "Academia Fenix";
+const title = "Academia Fenix - Taekwon-Do ITF";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/tailwind.css" />
+    <link rel="stylesheet" href="/styles.css" />
 </head>
-<body class="bg-darkGray text-white">
+<body class="bg-fenix-dark text-white">
     <Header />
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8"><slot /></main>
+    <main><slot /></main>
 
     <Footer />
 </body>
