@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Programas - Academia Fenix";
+---
+
+<Layout>
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold text-white mb-8">Programas</h1>
+        <p class="text-gray-300 text-lg mb-8">
+            Nuestros programas de entrenamiento
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card-dark">
+                <div class="text-4xl mb-4">👶</div>
+                <h3 class="text-xl font-bold text-white mb-2">Infantiles</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Clases diseñadas para niños, enfocadas en disciplina, respeto y desarrollo físico.
+                </p>
+                <p class="text-fenix-orange font-semibold">Martes y Jueves 18:30</p>
+            </div>
+            
+            <div class="card-dark">
+                <div class="text-4xl mb-4">🧑</div>
+                <h3 class="text-xl font-bold text-white mb-2">Juveniles y Adultos</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Entrenamiento intensivo para adolescentes y adultos de todos los niveles.
+                </p>
+                <p class="text-fenix-orange font-semibold">Martes y Jueves 19:30</p>
+            </div>
+        </div>
+    </div>
+</Layout>
