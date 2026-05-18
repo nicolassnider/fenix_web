@@ -2,20 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom animations */
-@keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
+/* Base Styles para Academia Fenix */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.animate-fade-in-up {
-    animation-name: fade-in-up;
-    animation-duration: 0.8s;
-    animation-timing-function: ease-out;
+body {
+    background-color: #0F0F0F;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Componentes personalizados */
+.fenix-accent {
+    color: #E63946;
+}
+
+.fenix-accent-secondary {
+    color: #F1A208;
+}
+
+.fenix-accent-blue {
+    color: #0A658E;
+}
+
+.fenix-accent-gold {
+    color: #FFD700;
+}
+
+/* Botones sin animaciones */
+.btn-primary {
+    background: linear-gradient(135deg, #E63946 0%, #F1A208 100%);
+    color: #FFFFFF;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.btn-secondary {
+    border: 2px solid #E63946;
+    color: #E63946;
+    padding: 10px 26px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    transition: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-secondary:hover {
+    background: #E63946;
+    color: #FFFFFF;
+}
+
+/* Secciones */
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #E63946, #F1A208, transparent);
+    margin: 40px 0;
+}
+
+/* Cards */
+.card-dark {
+    background-color: #1A1A1A;
+    border-left: 4px solid #E63946;
+    padding: 24px;
+    border-radius: 2px;
+}
+
+.card-dark-blue {
+    background-color: #1A1A1A;
+    border-left: 4px solid #0A658E;
+    padding: 24px;
+    border-radius: 2px;
 }
