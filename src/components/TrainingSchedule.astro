@@ -15,12 +15,11 @@ const schedules = await getTrainingSchedule();
                         <p class="text-fenix-orange font-semibold text-lg">{schedule.time}</p>
                     </div>
                     <div class="text-3xl">
-                        {schedule.day.includes('Lunes') || schedule.day.includes('Miércoles') ? '👶' : 
-                         schedule.day.includes('Martes') || schedule.day.includes('Jueves') ? '🧑' : '👨'}
+                        {schedule.category === 'Infantiles' ? '👶' : '🧑'}
                     </div>
                 </div>
                 <p class="text-gray-400 text-sm mb-4">
-                    Duración: 1 hora
+                    {schedule.category}
                 </p>
                 <button class="btn-secondary w-full text-sm">
                     Ver Detalles

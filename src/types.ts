@@ -9,4 +9,15 @@ export interface Testimonial {
 export interface TrainingSchedule {
     day: string;
     time: string;
+    category: string;
+}
+
+export interface BlogPost {
+    id: string;
+    title: string;
+    excerpt: string;
+    content: string;
+    date: string;
+    category: string;
+    image?: string;
 }
