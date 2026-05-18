@@ -1,16 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 import HomeSections from '../components/HomeSections.astro';
 
-const title = "Bienvenidos a Academia Fenix";
+const title = "Academia Fenix - Taekwon-Do ITF";
 ---
 
 <Layout>
-    <main class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-6">Bienvenidos a Academia Fenix</h1>
-        <p class="mb-4">Descubre el entrenamiento de Taekwondo ITF y eventos en nuestra escuela.</p>
-
-        <!-- Secciones del Inicio -->
-        {<HomeSections />}
-    </main>
+    <Hero />
+    <HomeSections />
 </Layout>
