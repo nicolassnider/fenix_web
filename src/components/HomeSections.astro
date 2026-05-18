@@ -1,24 +1,156 @@
 ---
-import Hero from './Hero.astro';
 import TrainingSchedule from './TrainingSchedule.astro';
 import Testimonials from './Testimonials.astro';
-
-
+import Welcome from './Welcome.astro';
+import Values from './Values.astro';
+import ValuesDetail from './ValuesDetail.astro';
+import Oath from './Oath.astro';
 ---
 
-<div class="container mx-auto px-4 py-8">
-    <!-- Hero Section -->
-    <div id="hero" class="mb-10">
-        <Hero />
-    </div>
+<div class="container mx-auto px-4 py-16">
+    <!-- Sección de Bienvenida -->
+    <section class="mb-24">
+        <Welcome />
+    </section>
 
-    <!-- Training Schedule Section -->
-    <div id="training-schedule" class="mb-10 animate-pulse flex justify-center items-center">
+    <div class="section-divider"></div>
+
+    <!-- Sección de Valores - Enfatiza rectitud y honor -->
+    <section class="mb-24">
+        <Values />
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección sobre qué es Taekwon-Do -->
+    <section class="mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="fenix-accent">Qué es</span><br />
+                    <span class="text-white">Taekwon-Do</span>
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                    Taekwon-Do es un arte marcial coreano que desarrolla no solo la fuerza física, sino también la disciplina mental y el espíritu. Basado en los principios de respeto, integridad y excelencia.
+                </p>
+                <div class="space-y-4">
+                    <div class="card-dark">
+                        <h3 class="text-xl font-bold fenix-accent mb-2">⚡ Técnica</h3>
+                        <p class="text-gray-300">Movimientos precisos y poderosos desarrollados a través del entrenamiento.</p>
+                    </div>
+                    <div class="card-dark">
+                        <h3 class="text-xl font-bold fenix-accent-blue mb-2">🧠 Disciplina</h3>
+                        <p class="text-gray-300">Formación del carácter y control mental a través de la práctica constante.</p>
+                    </div>
+                    <div class="card-dark">
+                        <h3 class="text-xl font-bold fenix-accent-secondary mb-2">⭐ Espíritu</h3>
+                        <p class="text-gray-300">Desarrollo integral como persona y guerrero del espíritu.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-fenix-darkgray rounded-lg p-8 border-l-4 border-fenix-gold flex items-center justify-center min-h-96">
+                <div class="text-center">
+                    <p class="text-6xl mb-4">⚡</p>
+                    <p class="text-gray-400 text-lg font-semibold">Tu viaje hacia la excelencia comienza aquí</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección de Valores Detallados -->
+    <section class="mb-24">
+        <ValuesDetail />
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección del Juramento -->
+    <section class="mb-24">
+        <Oath />
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección de Programas/Clases -->
+    <section class="mb-24">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="fenix-accent">Nuestros</span> Programas
+            </h2>
+            <p class="text-gray-300 text-lg">Diseñados para todas las edades y niveles de experiencia</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Programa Infantil -->
+            <div class="card-dark-blue group">
+                <div class="text-5xl mb-4">👶</div>
+                <h3 class="text-2xl font-bold mb-3">Infantil (4-8 años)</h3>
+                <p class="text-gray-300 mb-6">Introducción al arte, desarrollo de coordinación y disciplina básica.</p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                    <li>✓ 2-3 clases por semana</li>
+                    <li>✓ Ambiente seguro y divertido</li>
+                    <li>✓ Técnicas fundamentales</li>
+                </ul>
+            </div>
+
+            <!-- Programa Juvenil -->
+            <div class="card-dark" style="border-left-color: #F1A208;">
+                <div class="text-5xl mb-4">🧑</div>
+                <h3 class="text-2xl font-bold mb-3">Juvenil (9-17 años)</h3>
+                <p class="text-gray-300 mb-6">Técnicas avanzadas, fortalecimiento y preparación competitiva.</p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                    <li>✓ 3-4 clases por semana</li>
+                    <li>✓ Entrenamiento de competencia</li>
+                    <li>✓ Desarrollo de potencia y velocidad</li>
+                </ul>
+            </div>
+
+            <!-- Programa Adulto -->
+            <div class="card-dark-blue group">
+                <div class="text-5xl mb-4">👨</div>
+                <h3 class="text-2xl font-bold mb-3">Adulto (18+)</h3>
+                <p class="text-gray-300 mb-6">Entrenamiento integral para fitness, defensa personal y maestría.</p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                    <li>✓ Horarios flexibles</li>
+                    <li>✓ Defensa personal efectiva</li>
+                    <li>✓ Fitness de alto rendimiento</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección de Horarios -->
+    <section class="mb-24">
+        <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
+            <span class="fenix-accent">Horarios</span> de Entrenamiento
+        </h2>
         <TrainingSchedule />
-    </div>
+    </section>
 
-    <!-- Testimonials Section -->
-    <div id="testimonials" class="animate-fade-in-up mb-10">
+    <div class="section-divider"></div>
+
+    <!-- Sección de Testimonios -->
+    <section class="mb-24">
+        <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
+            <span class="fenix-accent">Lo que Dicen</span> Nuestros Estudiantes
+        </h2>
         <Testimonials />
-    </div>
+    </section>
+
+    <!-- Sección CTA Final -->
+    <section class="bg-gradient-to-r from-fenix-red to-fenix-orange rounded-lg p-12 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            ¿Listo para Comenzar tu Viaje?
+        </h2>
+        <p class="text-lg text-white mb-8 max-w-2xl mx-auto">
+            Únete a nuestra comunidad de guerreros del espíritu y descubre tu verdadero potencial.
+        </p>
+        <button class="bg-white text-fenix-red px-8 py-4 font-bold text-lg rounded hover:opacity-90 transition">
+            Contáctanos Ahora
+        </button>
+    </section>
 </div>

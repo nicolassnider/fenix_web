@@ -5,16 +5,28 @@ import type { Testimonial } from '../types';
 const testimonials = await getTestimonials();
 ---
 
-<div class="bg-white p-6 rounded-lg shadow-md animate-fade-in-up flex justify-center items-center">
-    <div>
-        <h2 class="text-xl font-bold mb-4">Testimonios</h2>
-        {testimonials.map((testimonial: Testimonial, index: number) => (
-            <>
-                <blockquote class="border-l-4 border-primaryBlue p-3 mb-4 flex justify-between items-center">
-                    <p>{testimonial.text}</p>
-                    - <cite class="ml-2">{testimonial.name}</cite>
-                </blockquote>
-            </>
+<div class="w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((testimonial: Testimonial) => (
+            <div class="card-dark h-full flex flex-col">
+                <!-- Estrellas -->
+                <div class="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map(() => (
+                        <span class="text-fenix-gold text-xl">★</span>
+                    ))}
+                </div>
+
+                <!-- Texto -->
+                <p class="text-gray-300 mb-6 flex-grow italic">
+                    "{testimonial.text}"
+                </p>
+
+                <!-- Autor -->
+                <div class="border-t border-gray-600 pt-4">
+                    <p class="font-bold text-white">{testimonial.name}</p>
+                    <p class="text-sm text-fenix-orange">Estudiante de Taekwon-Do</p>
+                </div>
+            </div>
         ))}
     </div>
 </div>
