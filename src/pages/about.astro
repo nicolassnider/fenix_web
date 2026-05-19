@@ -1,9 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
-  </head>
-  <body>
-    <!-- Add your about page content here -->
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sobre Nosotros - Academia Fenix">
+    <!-- Header visual -->
+    <section class="relative py-24 bg-fenix-dark border-b-4 border-fenix-orange overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-gradient-to-b from-transparent to-fenix-red"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                <span class="fenix-accent">Nuestra</span> Historia
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Conoce la Academia Fenix y a quienes la guían en el camino del Taekwon-Do ITF.
+            </p>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-4 py-16">
+        <!-- Sobre la Escuela -->
+        <section class="mb-24 scroll-animate is-visible">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">
+                        <span class="fenix-accent">Academia Fenix:</span><br />
+                        Forjando Guerreros del Espíritu
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        La Academia Fenix nace con la misión de transmitir el verdadero espíritu del Taekwon-Do ITF. No somos solo un lugar de entrenamiento físico, sino una escuela de vida donde fomentamos el respeto, la integridad, la perseverancia, el autocontrol y el espíritu indomable.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Nuestras puertas están abiertas para estudiantes de todas las edades y niveles de experiencia. Aquí encontrarás un ambiente familiar y de apoyo mutuo, donde cada practicante es guiado paso a paso para superar sus propios límites y alcanzar la excelencia tanto en el Dojang como en su vida diaria.
+                    </p>
+                </div>
+                <div class="bg-fenix-darkgray rounded-lg p-8 border-l-4 border-fenix-red flex flex-col justify-center min-h-80 shadow-2xl">
+                    <div class="text-5xl mb-4 text-center">🏛️</div>
+                    <h3 class="text-2xl font-bold text-center mb-4 text-white">Nuestra Visión</h3>
+                    <p class="text-gray-400 text-center text-lg italic">
+                        "Construir un mundo más pacífico a través del entrenamiento de la mente y el cuerpo, forjando líderes íntegros para el futuro."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Sobre el Sabomnim -->
+        <section class="mb-24 scroll-animate is-visible">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center flex-col-reverse md:flex-row">
+                <div class="bg-gradient-to-br from-fenix-dark to-[#1a1a1a] rounded-lg p-2 border-2 border-fenix-orange shadow-2xl relative">
+                    <!-- Placeholder de imagen del Sabomnim -->
+                    <div class="bg-fenix-darkgray rounded flex items-center justify-center min-h-[500px]">
+                        <div class="text-center">
+                            <span class="text-7xl">🥋</span>
+                            <p class="text-fenix-orange font-bold mt-4 tracking-widest uppercase">Sabomnim</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 class="text-4xl font-bold mb-2">
+                        <span class="text-white">Ignacio Morales</span>
+                    </h2>
+                    <h3 class="text-2xl font-bold fenix-accent mb-6">Sabomnim - IV Dan ITF</h3>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        El Sabomnim Ignacio Morales, cinturón negro IV Dan Internacional, es el director y fundador de la Academia Fenix. Con años de experiencia y un profundo amor por el Taekwon-Do, ha dedicado su vida a la enseñanza y difusión de este arte marcial.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl">🏆</div>
+                            <div>
+                                <h4 class="font-bold text-white">Trayectoria</h4>
+                                <p class="text-gray-400">Instructor Internacional certificado, con amplia experiencia formando practicantes y, sobre todo, personas de bien.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl">🧠</div>
+                            <div>
+                                <h4 class="font-bold text-white">Filosofía de Enseñanza</h4>
+                                <p class="text-gray-400">Creer en el potencial ilimitado de cada estudiante. Su enfoque combina la disciplina técnica rigurosa con el acompañamiento pedagógico y motivación constante.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <blockquote class="border-l-4 border-fenix-orange pl-6 py-2 text-gray-300 italic">
+                        "El Taekwon-Do no se trata de vencer al oponente que tienes enfrente, sino de conquistar las limitaciones que tienes dentro."
+                        <footer class="mt-2 text-fenix-orange font-bold">— Sabomnim Ignacio Morales</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="bg-gradient-to-r from-fenix-red to-fenix-orange rounded-lg p-12 text-center mt-12 scroll-animate is-visible">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Aprende de los Mejores
+            </h2>
+            <p class="text-lg text-white mb-8 max-w-2xl mx-auto">
+                Ven a conocer nuestra escuela y toma tu primera clase de prueba con el Sabomnim Ignacio Morales.
+            </p>
+            <a href="/contacto" class="inline-block bg-white text-fenix-red px-8 py-4 font-bold text-lg rounded hover:opacity-90 transition shadow-lg">
+                Reserva tu Clase de Prueba
+            </a>
+        </section>
+    </div>
+</Layout>
