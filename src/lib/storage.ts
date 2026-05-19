@@ -1,15 +1,17 @@
-import { storage } from './firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import type { FirebaseStorage } from 'firebase/storage';
 import * as fs from 'fs';
 import * as path from 'path';
 
 /**
  * Upload a local image file to Firebase Storage
+ * @param storageInstance - Firebase Storage instance
  * @param localPath - Local path to the image file
  * @param storagePath - Path in Firebase Storage (e.g., 'blog-images/post-1.jpg')
  * @returns Download URL of the uploaded image
  */
 export async function uploadImageToStorage(
+  storageInstance: FirebaseStorage,
   localPath: string,
   storagePath: string
 ): Promise<string> {
@@ -23,7 +25,7 @@ export async function uploadImageToStorage(
     const fileBuffer = fs.readFileSync(localPath);
 
     // Create storage reference
-    const storageRef = ref(storage, storagePath);
+    const storageRef = ref(storageInstance, storagePath);
 
     // Upload file
     const snapshot = await uploadBytes(storageRef, fileBuffer);
@@ -41,11 +43,13 @@ export async function uploadImageToStorage(
 
 /**
  * Upload multiple images from a directory to Firebase Storage
+ * @param storageInstance - Firebase Storage instance
  * @param directory - Local directory containing images
  * @param storagePrefix - Prefix for storage paths (e.g., 'blog-images/')
  * @returns Map of filenames to download URLs
  */
 export async function uploadImagesFromDirectory(
+  storageInstance: FirebaseStorage,
   directory: string,
   storagePrefix: string
 ): Promise<Map<string, string>> {
@@ -69,7 +73,7 @@ export async function uploadImagesFromDirectory(
       const storagePath = `${storagePrefix}${file}`;
       
       try {
-        const downloadURL = await uploadImageToStorage(localPath, storagePath);
+        const downloadURL = await uploadImageToStorage(storageInstance, localPath, storagePath);
         urlMap.set(file, downloadURL);
       } catch (error) {
         console.error(`Failed to upload ${file}:`, error);

@@ -1,0 +1,3 @@
+Este archivo asegura que la carpeta 'uploads' exista en el repositorio.
+Coloca aquí las imágenes locales que el script populate-firestore.ts subirá a Firebase.
+Estos archivos NO se subirán al repositorio de código gracias al .gitignore.

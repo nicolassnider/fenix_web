@@ -155,7 +155,23 @@ npm run populate-firestore
 
 ### Gestión de Imágenes del Blog
 
-El proyecto soporta imágenes en los posts del blog mediante Firebase Storage:
+El proyecto soporta imágenes en los posts del blog mediante Firebase Storage. Para que la subida funcione correctamente, sigue estos pasos:
+
+**0. Configurar Firebase Storage (Por única vez):**
+- Ve a la [Consola de Firebase](https://console.firebase.google.com/) -> **Storage** -> **Get Started**.
+- Configura las reglas de seguridad (`Rules`) para permitir lectura pública, y escritura pública temporalmente mientras ejecutas el script:
+  ```text
+  rules_version = '2';
+  service firebase.storage {
+    match /b/{bucket}/o {
+      match /{allPaths=**} {
+        allow read: if true;
+        allow write: if true; 
+      }
+    }
+  }
+  ```
+- *Importante:* Una vez finalizada la subida de los posts, cambia a `allow write: if false;` por seguridad.
 
 **1. Agregar imágenes locales:**
 - Coloca las imágenes en la carpeta `public/`

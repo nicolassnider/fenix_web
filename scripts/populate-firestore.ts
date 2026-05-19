@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { getFirestore, doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import blogPostsData from "../src/data/blog-posts.json";
 import dotenv from "dotenv";
 import { uploadImageToStorage } from "../src/lib/storage";
@@ -31,6 +32,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 async function populateFirestore() {
   try {
@@ -44,9 +46,10 @@ async function populateFirestore() {
       // If post has a local image path, upload it to Firebase Storage
       if (post.image && !post.image.startsWith('http')) {
         try {
-          const imagePath = path.join(process.cwd(), 'public', post.image);
+          const imageFilename = path.basename(post.image);
+          const imagePath = path.join(process.cwd(), 'uploads', imageFilename);
           const storagePath = `blog-images/${post.id}-${path.basename(post.image)}`;
-          imageUrl = await uploadImageToStorage(imagePath, storagePath);
+          imageUrl = await uploadImageToStorage(storage, imagePath, storagePath);
         } catch (error) {
           console.warn(`⚠️ Failed to upload image for post "${post.title}":`, error);
           // Keep original image path if upload fails
@@ -54,7 +57,8 @@ async function populateFirestore() {
         }
       }
       
-      const docRef = await addDoc(collection(db, 'blogPosts'), {
+      const docRef = doc(db, 'blogPosts', post.id);
+      await setDoc(docRef, {
         title: post.title,
         excerpt: post.excerpt,
         content: post.content,
@@ -62,9 +66,9 @@ async function populateFirestore() {
         category: post.category,
         ...(imageUrl && { image: imageUrl }),
         createdAt: serverTimestamp()
-      });
+      }, { merge: true });
       
-      console.log(`✅ Added blog post: ${post.title} (ID: ${docRef.id})`);
+      console.log(`✅ Added/Updated blog post: ${post.title} (ID: ${post.id})`);
     }
     
     console.log('✅ All blog posts have been added to Firestore!');
