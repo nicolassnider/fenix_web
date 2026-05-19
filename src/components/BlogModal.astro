@@ -1,0 +1,118 @@
+---
+// Component representing the blog post detail modal
+---
+
+<!-- Modal Background -->
+<div id="blog-modal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <!-- Modal Content -->
+    <div class="bg-fenix-dark border-2 border-fenix-orange rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-content-container">
+        
+        <div class="relative">
+            <button id="close-modal" class="absolute top-4 right-4 bg-black/50 hover:bg-fenix-red text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div id="modal-image-container" class="w-full h-64 md:h-96 overflow-hidden hidden">
+                <img id="modal-image" src="" alt="" class="w-full h-full object-cover" />
+            </div>
+            
+            <div class="p-8">
+                <span id="modal-category" class="text-fenix-orange text-sm font-semibold uppercase tracking-wider"></span>
+                <h2 id="modal-title" class="text-3xl font-bold text-white mb-2 mt-2"></h2>
+                <p id="modal-date" class="text-gray-500 text-sm mb-6 border-b border-gray-700 pb-4"></p>
+                
+                <div id="modal-content" class="text-gray-300 leading-relaxed space-y-4">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('blog-modal');
+    const modalContentContainer = document.getElementById('modal-content-container');
+    const closeModalBtn = document.getElementById('close-modal');
+    
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modal-category');
+    const modalDate = document.getElementById('modal-date');
+    const modalContent = document.getElementById('modal-content');
+    const modalImageContainer = document.getElementById('modal-image-container');
+    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+
+    // Open Modal
+    document.querySelectorAll('.blog-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.getAttribute('data-title');
+            const category = card.getAttribute('data-category');
+            const date = card.getAttribute('data-date');
+            const content = card.getAttribute('data-content');
+            const image = card.getAttribute('data-image');
+
+            if (title && modalTitle) modalTitle.textContent = title;
+            if (category && modalCategory) modalCategory.textContent = category;
+            if (date && modalDate) modalDate.textContent = date;
+            
+            // Format content into paragraphs
+            if (content && modalContent) {
+                const paragraphs = content.split('\n').filter(p => p.trim() !== '');
+                modalContent.innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+            }
+
+            if (image && modalImage && modalImageContainer) {
+                modalImage.src = image;
+                modalImage.alt = title || '';
+                modalImageContainer.classList.remove('hidden');
+            } else if (modalImage && modalImageContainer) {
+                modalImage.src = '';
+                modalImageContainer.classList.add('hidden');
+            }
+
+            // Show modal
+            if (modal && modalContentContainer) {
+                modal.classList.remove('hidden');
+                // Small delay to allow CSS transition to work
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalContentContainer.classList.remove('scale-95');
+                    modalContentContainer.classList.add('scale-100');
+                }, 10);
+                
+                // Prevent body scrolling
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close Modal Function
+    const closeModal = () => {
+        if (modal && modalContentContainer) {
+            modal.classList.add('opacity-0');
+            modalContentContainer.classList.remove('scale-100');
+            modalContentContainer.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }, 300);
+        }
+    };
+
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    
+    // Close when clicking outside
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+</script>
