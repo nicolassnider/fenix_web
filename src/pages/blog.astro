@@ -11,6 +11,15 @@ if (posts.length === 0) {
   console.log('Using fallback to JSON data');
   posts = await getBlogPosts();
 }
+
+// Sort posts by date (newest first)
+posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Helper function to truncate text
+function truncateText(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + '...';
+}
 ---
 
 <Layout>
@@ -20,16 +29,26 @@ if (posts.length === 0) {
             Actividades y noticias de la escuela
         </p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="max-w-3xl mx-auto space-y-6">
             {posts.map((post: BlogPost) => (
                 <div class="card-dark">
-                    <div class="h-48 bg-fenix-darkgray rounded-t-lg mb-4 flex items-center justify-center">
-                        <span class="text-6xl">📰</span>
-                    </div>
+                    {post.image ? (
+                        <div class="h-48 rounded-t-lg mb-4 overflow-hidden">
+                            <img 
+                                src={post.image} 
+                                alt={post.title} 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                    ) : (
+                        <div class="h-48 bg-fenix-darkgray rounded-t-lg mb-4 flex items-center justify-center">
+                            <span class="text-6xl">📰</span>
+                        </div>
+                    )}
                     <div class="px-4 pb-4">
                         <span class="text-fenix-orange text-sm font-semibold">{post.category}</span>
                         <h3 class="text-xl font-bold text-white mb-2">{post.title}</h3>
-                        <p class="text-gray-400 text-sm mb-4">{post.excerpt}</p>
+                        <p class="text-gray-400 text-sm mb-4">{truncateText(post.excerpt, 150)}</p>
                         <p class="text-gray-500 text-xs">{post.date}</p>
                     </div>
                 </div>

@@ -83,7 +83,9 @@ El sitio estará disponible en `http://localhost:3000`
 3. Configurar Firebase:
    - Crear un proyecto en [Firebase Console](https://console.firebase.google.com/)
    - Habilitar Firestore Database
-   - Descargar credenciales y configurar en `src/firebase.js`
+   - Habilitar Firebase Storage (para imágenes del blog)
+   - Configurar reglas de Storage para permitir lectura pública
+   - Descargar credenciales y configurar en `src/lib/config.ts`
 
 4. Crear archivo `.env`:
    ```bash
@@ -146,6 +148,48 @@ npm run format
 
 # Linter
 npm run lint
+
+# Poblar Firestore con posts del blog (incluye subida de imágenes)
+npm run populate-firestore
+```
+
+### Gestión de Imágenes del Blog
+
+El proyecto soporta imágenes en los posts del blog mediante Firebase Storage:
+
+**1. Agregar imágenes locales:**
+- Coloca las imágenes en la carpeta `public/`
+- Ejemplo: `public/images/inscripciones-2026.jpg`
+
+**2. Configurar el post en `blog-posts.json`:**
+```json
+{
+    "id": "1",
+    "title": "Inscripciones Abiertas 2026",
+    "excerpt": "...",
+    "content": "...",
+    "date": "2026-01-15",
+    "category": "Noticias",
+    "image": "/images/inscripciones-2026.jpg"
+}
+```
+
+**3. Subir a Firebase:**
+```bash
+npm run populate-firestore
+```
+
+El script automáticamente:
+- Detecta rutas locales de imágenes
+- Sube las imágenes a Firebase Storage en `blog-images/{id}-{filename}`
+- Guarda la URL de descarga en Firestore
+- Si la imagen ya es una URL externa, la usa directamente
+
+**4. Usar URLs externas (opcional):**
+```json
+{
+    "image": "https://example.com/image.jpg"
+}
 ```
 
 ## 🚀 Despliegue

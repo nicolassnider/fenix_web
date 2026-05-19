@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
 import blogPostsData from "../src/data/blog-posts.json";
 import dotenv from "dotenv";
+import { uploadImageToStorage } from "../src/lib/storage";
+import * as path from "path";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -37,13 +39,28 @@ async function populateFirestore() {
     const posts = blogPostsData as BlogPostWithImage[];
     
     for (const post of posts) {
+      let imageUrl = post.image;
+      
+      // If post has a local image path, upload it to Firebase Storage
+      if (post.image && !post.image.startsWith('http')) {
+        try {
+          const imagePath = path.join(process.cwd(), 'public', post.image);
+          const storagePath = `blog-images/${post.id}-${path.basename(post.image)}`;
+          imageUrl = await uploadImageToStorage(imagePath, storagePath);
+        } catch (error) {
+          console.warn(`⚠️ Failed to upload image for post "${post.title}":`, error);
+          // Keep original image path if upload fails
+          imageUrl = post.image;
+        }
+      }
+      
       const docRef = await addDoc(collection(db, 'blogPosts'), {
         title: post.title,
         excerpt: post.excerpt,
         content: post.content,
         date: post.date,
         category: post.category,
-        ...(post.image && { image: post.image }),
+        ...(imageUrl && { image: imageUrl }),
         createdAt: serverTimestamp()
       });
       
