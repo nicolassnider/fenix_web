@@ -23,6 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Ignorar imagenes locales para subir a Firebase
-uploads/*
-!uploads/.gitkeep
+# Las imagenes de uploads ya no se ignoran para poder servirse localmente y en Netlify
+# uploads/*
+# !uploads/.gitkeep
