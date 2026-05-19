@@ -155,58 +155,67 @@ npm run populate-firestore
 
 ### Gestión de Imágenes del Blog
 
-El proyecto soporta imágenes en los posts del blog mediante Firebase Storage. Para que la subida funcione correctamente, sigue estos pasos:
+Para mantener el proyecto en el **Plan Spark (Gratuito)** de Firebase sin necesidad de activar facturación (Plan Blaze), se recomienda hospedar las imágenes en un servicio externo como **ImgBB** (o similar) y usar su URL directa en la configuración.
 
-**0. Configurar Firebase Storage (Por única vez):**
-- Ve a la [Consola de Firebase](https://console.firebase.google.com/) -> **Storage** -> **Get Started**.
-- Configura las reglas de seguridad (`Rules`) para permitir lectura pública, y escritura pública temporalmente mientras ejecutas el script:
-  ```text
-  rules_version = '2';
-  service firebase.storage {
-    match /b/{bucket}/o {
-      match /{allPaths=**} {
-        allow read: if true;
-        allow write: if true; 
-      }
-    }
-  }
-  ```
-- *Importante:* Una vez finalizada la subida de los posts, cambia a `allow write: if false;` por seguridad.
+#### Método Recomendado: Hosting de Imágenes Externo (ImgBB)
 
-**1. Agregar imágenes locales:**
-- Coloca las imágenes en la carpeta `public/`
-- Ejemplo: `public/images/inscripciones-2026.jpg`
+1. **Subir la imagen**: Sube tu archivo de imagen a [ImgBB](https://imgbb.com/) o a tu proveedor preferido.
+2. **Obtener el enlace directo**: Asegúrate de copiar la URL directa de la imagen (debe terminar en la extensión del archivo, ej: `.avif`, `.jpg`, `.png`). Ejemplo: `https://i.ibb.co/XYZ123/1-taekwondo.avif`.
+3. **Configurar el post en `blog-posts.json`**:
+   Usa la URL directa de ImgBB en el campo `"image"` de [blog-posts.json](file:///c:/repos/fenix_web/src/data/blog-posts.json):
+   ```json
+   {
+       "id": "1",
+       "title": "Inscripciones Abiertas 2026",
+       "excerpt": "...",
+       "content": "...",
+       "date": "2026-01-15",
+       "category": "Noticias",
+       "image": "https://i.ibb.co/XYZ123/1-taekwondo.avif"
+   }
+   ```
+4. **Sincronizar con Firestore**:
+   Ejecuta el script para actualizar la base de datos:
+   ```bash
+   npm run populate-firestore
+   ```
+   El script detectará automáticamente que la imagen inicia con `http` y guardará la URL externa directamente en la base de datos de Firestore.
 
-**2. Configurar el post en `blog-posts.json`:**
-```json
-{
-    "id": "1",
-    "title": "Inscripciones Abiertas 2026",
-    "excerpt": "...",
-    "content": "...",
-    "date": "2026-01-15",
-    "category": "Noticias",
-    "image": "/images/inscripciones-2026.jpg"
-}
-```
+---
 
-**3. Subir a Firebase:**
-```bash
-npm run populate-firestore
-```
+#### Método Alternativo: Firebase Storage (Requiere Plan Blaze / Facturación activa)
 
-El script automáticamente:
-- Detecta rutas locales de imágenes
-- Sube las imágenes a Firebase Storage en `blog-images/{id}-{filename}`
-- Guarda la URL de descarga en Firestore
-- Si la imagen ya es una URL externa, la usa directamente
+Si prefieres usar el almacenamiento nativo de Firebase:
 
-**4. Usar URLs externas (opcional):**
-```json
-{
-    "image": "https://example.com/image.jpg"
-}
-```
+1. **Habilitar el Plan Blaze**: En la consola de Firebase, cambia tu plan de Spark a Blaze asociando una tarjeta de crédito o débito.
+2. **Configurar Firebase Storage (Por única vez)**:
+   - Ve a la [Consola de Firebase](https://console.firebase.google.com/) -> **Storage** -> **Comenzar**.
+   - Configura las reglas de seguridad (`Rules`) para permitir la lectura y escritura pública durante el guardado:
+     ```text
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /{allPaths=**} {
+           allow read: if true;
+           allow write: if true; 
+         }
+       }
+     }
+     ```
+   - *Importante:* Una vez finalizada la subida de los posts, cambia a `allow write: if false;` por seguridad.
+3. **Configurar el post en `blog-posts.json`**:
+   - Guarda la imagen local en una carpeta (ej: `uploads/`).
+   - Usa la ruta local en el campo `"image"`:
+     ```json
+     {
+         "image": "/uploads/1_taekwondo.avif"
+     }
+     ```
+4. **Subir a Firebase**:
+   ```bash
+   npm run populate-firestore
+   ```
+   El script detectará la ruta local, subirá la imagen automáticamente a Firebase Storage en la carpeta `blog-images/` y actualizará Firestore con la URL remota.
 
 ## 🚀 Despliegue
 
