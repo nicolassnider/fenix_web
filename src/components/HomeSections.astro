@@ -14,58 +14,17 @@ import Oath from './Oath.astro';
 
     <div class="section-divider"></div>
 
-    <!-- Sección sobre qué es Taekwon-Do -->
+    <!-- Sección de Testimonios (Social Proof primero para los padres) -->
     <section class="mb-24 scroll-animate">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="fenix-accent">Qué es</span><br />
-                    <span class="text-white">Taekwon-Do</span>
-                </h2>
-                <p class="text-gray-300 text-lg leading-relaxed mb-6">
-                    Taekwon-Do es un arte marcial coreano que desarrolla no solo la fuerza física, sino también la disciplina mental y el espíritu. Basado en los principios de respeto, integridad y excelencia.
-                </p>
-                <div class="space-y-4">
-                    <div class="card-dark">
-                        <h3 class="text-xl font-bold fenix-accent mb-2">⚡ Técnica</h3>
-                        <p class="text-gray-300">Movimientos precisos y poderosos desarrollados a través del entrenamiento.</p>
-                    </div>
-                    <div class="card-dark">
-                        <h3 class="text-xl font-bold fenix-accent-blue mb-2">🧠 Disciplina</h3>
-                        <p class="text-gray-300">Formación del carácter y control mental a través de la práctica constante.</p>
-                    </div>
-                    <div class="card-dark">
-                        <h3 class="text-xl font-bold fenix-accent-secondary mb-2">⭐ Espíritu</h3>
-                        <p class="text-gray-300">Desarrollo integral como persona y guerrero del espíritu.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-fenix-darkgray rounded-lg p-8 border-l-4 border-fenix-gold flex items-center justify-center min-h-96">
-                <div class="text-center">
-                    <p class="text-6xl mb-4">⚡</p>
-                    <p class="text-gray-400 text-lg font-semibold">Tu viaje hacia la excelencia comienza aquí</p>
-                </div>
-            </div>
-        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
+            <span class="fenix-accent">Lo que Dicen</span> Nuestros Estudiantes y Padres
+        </h2>
+        <Testimonials />
     </section>
 
     <div class="section-divider"></div>
 
-    <!-- Sección de Valores Detallados -->
-    <section class="mb-24 scroll-animate">
-        <ValuesDetail />
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Sección del Juramento -->
-    <section class="mb-24 scroll-animate">
-        <Oath />
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Sección de Programas/Clases -->
+    <!-- Sección de Programas/Clases (Qué ofrecemos para sus hijos) -->
     <section class="mb-24 scroll-animate">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">
@@ -115,22 +74,63 @@ import Oath from './Oath.astro';
 
     <div class="section-divider"></div>
 
+    <!-- Sección de Valores Detallados (Por qué elegirnos) -->
+    <section class="mb-24 scroll-animate">
+        <ValuesDetail />
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección sobre qué es Taekwon-Do -->
+    <section class="mb-24 scroll-animate">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="fenix-accent">Qué es</span><br />
+                    <span class="text-white">Taekwon-Do</span>
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                    Taekwon-Do es un arte marcial coreano que desarrolla no solo la fuerza física, sino también la disciplina mental y el espíritu. Basado en los principios de respeto, integridad y excelencia.
+                </p>
+                <div class="space-y-4">
+                    <div class="card-dark">
+                        <h3 class="text-xl font-bold fenix-accent mb-2">⚡ Técnica</h3>
+                        <p class="text-gray-300">Movimientos precisos y poderosos desarrollados a través del entrenamiento.</p>
+                    </div>
+                    <div class="card-dark">
+                        <h3 class="text-xl font-bold fenix-accent-blue mb-2">🧠 Disciplina</h3>
+                        <p class="text-gray-300">Formación del carácter y control mental a través de la práctica constante.</p>
+                    </div>
+                    <div class="card-dark">
+                        <h3 class="text-xl font-bold fenix-accent-secondary mb-2">⭐ Espíritu</h3>
+                        <p class="text-gray-300">Desarrollo integral como persona y guerrero del espíritu.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-fenix-darkgray rounded-lg p-8 border-l-4 border-fenix-gold flex items-center justify-center min-h-96">
+                <div class="text-center">
+                    <p class="text-6xl mb-4">⚡</p>
+                    <p class="text-gray-400 text-lg font-semibold">Tu viaje hacia la excelencia comienza aquí</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Sección del Juramento -->
+    <section class="mb-24 scroll-animate">
+        <Oath />
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- Sección de Horarios -->
     <section class="mb-24 scroll-animate">
         <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
             <span class="fenix-accent">Horarios</span> de Entrenamiento
         </h2>
         <TrainingSchedule />
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Sección de Testimonios -->
-    <section class="mb-24 scroll-animate">
-        <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">
-            <span class="fenix-accent">Lo que Dicen</span> Nuestros Estudiantes
-        </h2>
-        <Testimonials />
     </section>
 
     <!-- Sección CTA Final -->
