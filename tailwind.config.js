@@ -19,7 +19,7 @@ module.exports = {
             },
             backgroundImage: {
                 'fenix-gradient': 'linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%)',
-                'fenix-accent': 'linear-gradient(135deg, #E63946 0%, #F1A208 100%)',
+                'fenix-accent': 'linear-gradient(135deg, #E63946 0%, #0A658E 100%)',
             }
         },
     },
