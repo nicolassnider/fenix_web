@@ -1,0 +1,76 @@
+---
+interface Props {
+    id: string;
+    nextSectionId?: string;
+    dividerColor?: 'red' | 'orange' | 'blue' | 'gold';
+}
+
+const { id, nextSectionId, dividerColor = 'orange' } = Astro.props;
+
+// Map colors to tailwind border and text/hover classes
+const colorClasses = {
+    red: {
+        border: 'border-fenix-red/20',
+        button: 'border-fenix-red/50 text-fenix-red hover:text-white hover:border-fenix-red hover:bg-fenix-red/10'
+    },
+    orange: {
+        border: 'border-fenix-orange/20',
+        button: 'border-fenix-orange/50 text-fenix-orange hover:text-white hover:border-fenix-orange hover:bg-fenix-orange/10'
+    },
+    blue: {
+        border: 'border-fenix-blue/20',
+        button: 'border-fenix-blue/50 text-fenix-blue hover:text-white hover:border-fenix-blue hover:bg-fenix-blue/10'
+    },
+    gold: {
+        border: 'border-fenix-gold/20',
+        button: 'border-fenix-gold/50 text-fenix-gold hover:text-white hover:border-fenix-gold hover:bg-fenix-gold/10'
+    }
+};
+
+const activeColor = colorClasses[dividerColor] || colorClasses.orange;
+---
+
+<section id={id} class="mb-16 scroll-animate">
+    <!-- Section content passed via composition (slot) -->
+    <slot />
+
+    <!-- Optional Divider with Scroll Button -->
+    {nextSectionId && (
+        <div class="relative flex items-center justify-center mt-16 mb-0 group">
+            <div class="absolute inset-0 flex items-center">
+                <div class={`w-full border-t ${activeColor.border}`}></div>
+            </div>
+            <a 
+                href={`#${nextSectionId}`} 
+                class={`relative z-10 w-10 h-10 rounded-full bg-fenix-dark border flex items-center justify-center transition-all duration-300 hover:scale-110 ${activeColor.button}`}
+                aria-label="Ir a la siguiente sección"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </a>
+        </div>
+    )}
+</section>
+
+<script>
+    // Self-contained scroll animation observer for sections
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all components with the animation class
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach(el => observer.observe(el));
+</script>
